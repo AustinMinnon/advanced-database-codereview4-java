@@ -46,4 +46,17 @@ public class BandTest {
     Venue savedVenue = myBand.getVenues().get(0);
     assertTrue(myVenue.equals(savedVenue));
   }
+
+  @Test
+  public void getVenues_returnsAllVenues_ArrayList() {
+    Band myBand = new Band("August Burns Red");
+    myBand.save();
+
+    Venue myVenue = new Venue("Modacenter");
+    myVenue.save();
+
+    myBand.addVenue(myVenue);
+    List savedVenues = myBand.getVenues();
+    assertEquals(savedVenues.size(), 1);
+  }
 }
