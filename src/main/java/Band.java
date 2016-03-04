@@ -71,14 +71,25 @@ public class Band {
     }
   }
 
-  public List<Venue> getVeneues() {
-    try(Connection con= DB.sql2o.open()){
-      String sql= "SELECT venues.* FROM bands JOIN bands_venues ON (bands.id = bands_venues.band_id) JOIN venues ON (bands_venues.venue_id = venue.id) WHERE bands.id = :band_id;";
-      return con.createQuery(sql)
-      .addParameter("band_id", this.getId())
-      .executeAndFetch(Venue.class);
+  public ArrayList<Venue> getVenues() {
+      try(Connection con = DB.sql2o.open()){
+        String sql = "SELECT venue_id FROM bands_venues WHERE band_id = :band_id";
+        List<Integer> venueIds = con.createQuery(sql)
+          .addParameter("band_id", this.getId())
+          .executeAndFetch(Integer.class);
+
+        ArrayList<Venue> venues = new ArrayList<Venue>();
+
+        for (Integer venueId : venueIds) {
+            String venueQuery = "SELECT * FROM venues WHERE id = :venueId";
+            Venue venue = con.createQuery(venueQuery)
+              .addParameter("venueId", venueId)
+              .executeAndFetchFirst(Venue.class);
+            venues.add(venue);
+        }
+        return venues;
+      }
     }
-  }
 
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
