@@ -112,7 +112,7 @@ public class App {
       model.put("template", "templates/venue.vtl");
       model.put("bands", Band.all());
       return new ModelAndView(model, layout);
-      }, new VelocityTemplateEngine());
+    }, new VelocityTemplateEngine());
 
     post("/venue/update/name/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
@@ -126,12 +126,24 @@ public class App {
       return null;
     });
 
-  post("/venue/delete/:id", (request, response) -> {
-    HashMap<String, Object> model = new HashMap<String, Object>();
-    int id = Integer.parseInt(request.params("id"));
-    Venue myVenue = Venue.find(id);
-    myVenue.delete();
-    model.put("venue", myVenue);
+    post("/venue/delete/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params("id"));
+      Venue myVenue = Venue.find(id);
+      myVenue.delete();
+      model.put("venue", myVenue);
+      response.redirect("/");
+      return null;
+    });
+
+    post("/venue/delete", (request, response) -> {
+      Venue.deleteAllVenues();
+      response.redirect("/");
+      return null;
+    });
+
+    post("/band/delete", (request, response) -> {
+      Band.deleteAllBands();
       response.redirect("/");
       return null;
     });
