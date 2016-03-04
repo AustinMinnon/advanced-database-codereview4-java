@@ -34,4 +34,17 @@ public class VenueTest {
     Band savedBand = Band.find(myBand.getId());
     assertTrue(myBand.equals(savedBand));
   }
+
+  @Test
+  public void addVenue_addsVenueToBand() {
+    Band myBand = new Band("Household chores");
+    myBand.save();
+
+    Venue myVenue = new Venue("Mow the lawn");
+    myVenue.save();
+
+    myBand.addVenue(myVenue);
+    Venue savedVenue = myBand.getVenues().get(0);
+    assertTrue(myVenue.equals(savedVenue));
+  }
 }
