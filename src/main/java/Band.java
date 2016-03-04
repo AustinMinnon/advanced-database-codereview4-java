@@ -76,7 +76,7 @@ public class Band {
       String sql= "SELECT venues.* FROM bands JOIN bands_venues ON (bands.id = bands_venues.band_id) JOIN venues ON (bands_venues.venue_id = venue.id) WHERE bands.id = :band_id;";
       return con.createQuery(sql)
       .addParameter("band_id", this.getId())
-      .executeUpdate(Venue.class);
+      .executeAndFetch(Venue.class);
     }
   }
 
