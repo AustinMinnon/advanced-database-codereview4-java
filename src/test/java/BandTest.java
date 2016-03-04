@@ -60,16 +60,16 @@ public class BandTest {
     assertEquals(savedVenues.size(), 1);
   }
 
-  // @Test
-  // public void delete_deletesAllVenuesAndListsAssoicationes() {
-  //   Band myBand = new Band("August Burns Red");
-  //   myBand.save();
-  //
-  //   Venue myVenue = new Venue("Modacenter");
-  //   myVenue.save();
-  //
-  //   myBand.addVenue(myVenue);
-  //   myBand.delete();
-  //   assertEquals(myVenue.getBands().size(), 0);
-  // }
+  @Test
+  public void delete_deletesAllVenuesAndListsAssoicationes() {
+    Band myBand = new Band("August Burns Red");
+    myBand.save();
+
+    Venue myVenue = new Venue("Modacenter");
+    myVenue.save();
+
+    myBand.addVenue(myVenue);
+    myBand.delete();
+    assertEquals(myVenue.getBands().size(), 0);
+  }
 }

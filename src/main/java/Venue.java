@@ -106,6 +106,10 @@ public class Venue {
       con.createQuery(deleteQuery)
       .addParameter("id", id)
       .executeUpdate();
+
+      String joinDeleteQuery = "DELETE FROM bands_venues WHERE venue_id > 0";
+        con.createQuery(joinDeleteQuery)
+          .executeUpdate();
     }
   }
 }
