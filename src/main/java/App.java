@@ -32,6 +32,18 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/add/venue", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      String inputName = request.queryParams("name");
+      Venue newVenue = new Venue(inputName);
+      newVenue.firstToUppercase();
+      newVenue.save();
+      model.put("venue", newVenue);
+      model.put("bands", Band.all());
+      model.put("venues", Venue.all());
+      model.put("template", "templates/index.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
     get("/band/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
