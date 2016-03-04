@@ -62,7 +62,7 @@ public class VenueTest {
   }
 
   @Test
-  public void delete_deletesAllVenuesFromBand() {
+  public void delete_deletesAllVenuesFromBands() {
     Band myBand = new Band("Household chores");
     myBand.save();
 

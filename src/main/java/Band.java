@@ -1,6 +1,7 @@
 import org.sql2o.*;
 import java.util.List;
 import java.util.ArrayList;
+import org.apache.commons.lang.WordUtils;
 
 public class Band {
   public int id;
@@ -21,6 +22,10 @@ public class Band {
 
   public Band(String name) {
     this.name = name;
+  }
+
+  public void firstToUppercase() {
+    this.name = WordUtils.capitalize(this.name.toLowerCase());
   }
 
   @Override
@@ -48,6 +53,16 @@ public class Band {
         .addParameter("name", name)
         .executeUpdate()
         .getKey();
+    }
+  }
+
+  public void update(String name) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE bands SET name = :name WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("name", name)
+        .addParameter("id", id)
+        .executeUpdate();
     }
   }
 
