@@ -12,7 +12,7 @@
 </form>
 
 <form action="/venue/delete/$venue.getId()" method="post">
-  <button class="btn btn-danger" type="submit">Delete $venue.getName()</button>
+  <button class="btn btn-danger deletevenue" type="submit">Delete $venue.getName()</button>
 </form>
 
 
@@ -21,7 +21,7 @@
 <form action="/venue/update/name/$venue.getId()" method="post">
   <label for="name">Update Venue Name</label>
   <input id="name" name="name" type="text" required>
-  <button class="btn btn-success" type="submit">Update</button>
+  <button class="btn btn-success updatevenue" type="submit">Update</button>
   <br>
 </form>
 

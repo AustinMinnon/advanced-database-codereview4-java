@@ -4,7 +4,7 @@
     <label for="name">Add Bands</label>
     <input id="name" name="name" type="text" required>
 
-    <button class="btn btn-success" type="submit">Add Band</button>
+    <button class="btn btn-success bandbtn" type="submit">Add Band</button>
   </form>
 </div>
 
@@ -12,7 +12,7 @@
   <form action="/add/venue" method="post">
     <label for="name">Add Venue</label>
     <input id="name" name="name" type="text" required>
-    <button class="btn btn-success" type="submit">Add Venue</button>
+    <button class="btn btn-success venuebtn" type="submit">Add Venue</button>
   </form>
 </div>
 </div>
@@ -21,7 +21,7 @@
 <div class="col-sm-6">
   <div>
     <form action ='/band/delete' method ='post'>
-      <button type ='submit' class=".btn btn-danger btn-xs"> Delete ALL Bands </button>
+      <button type ='submit' class=".btn btn-danger btn-xs allbands"> Delete ALL Bands </button>
     </form>
     <h3>List of all Bands</h3>
    #foreach ($band in $bands)
@@ -33,7 +33,7 @@
 <div class="col-sm-6">
   <div>
     <form action ='/venue/delete' method ='post'>
-      <button type ='submit' class=".btn btn-danger btn-xs"> Delete ALL Venues </button>
+      <button type ='submit' class=".btn btn-danger btn-xs allvenues"> Delete ALL Venues </button>
     </form>
     <h3>List of all Venues</h3>
    #foreach ($venue in $venues)

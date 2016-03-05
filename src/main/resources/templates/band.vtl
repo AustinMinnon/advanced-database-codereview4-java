@@ -13,7 +13,7 @@
 </form>
 
 <form action="/band/delete/$band.getId()" method="post">
-  <button class="btn btn-danger" type="submit">Delete $band.getName()</button>
+  <button class="btn btn-danger deleteband" type="submit">Delete $band.getName()</button>
 </form>
 
 
@@ -22,7 +22,7 @@
 <form action="/band/update/name/$band.getId()" method="post">
   <label for="name">Update Band Name</label>
   <input id="name" name="name" type="text" required>
-  <button class="btn btn-success" type="submit">Update</button>
+  <button class="btn btn-success updateband" type="submit">Update</button>
 </form>
 
 <h2>List of Venues $band.getName() has played at</h2>
