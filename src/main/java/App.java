@@ -81,6 +81,16 @@ public class App {
       return null;
     });
 
+    post("/band/deleteALL/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params("id"));
+      Band myBand = Band.find(id);
+      myBand.delete();
+      model.put("band", myBand);
+        response.redirect("/");
+        return null;
+      });
+
     post("/band/delete/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       int id = Integer.parseInt(request.params("id"));
@@ -126,6 +136,16 @@ public class App {
       return null;
     });
 
+    post("/venue/deleteALL/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      int id = Integer.parseInt(request.params("id"));
+      Venue myVenue = Venue.find(id);
+      myVenue.delete();
+      model.put("venue", myVenue);
+      response.redirect("/");
+      return null;
+    });
+
     post("/venue/delete/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       int id = Integer.parseInt(request.params("id"));
@@ -147,5 +167,6 @@ public class App {
       response.redirect("/");
       return null;
     });
+
   }
 }

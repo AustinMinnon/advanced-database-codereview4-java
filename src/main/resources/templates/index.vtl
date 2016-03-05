@@ -26,6 +26,9 @@
     <h3>List of all Bands</h3>
    #foreach ($band in $bands)
    <a class="btn btn-info btn-md btn-block" href="/band/$band.getId()">$band.getName()</a><br>
+   <form action ='/band/deleteAll' method ='post'>
+     <button type ='submit' class=".btn btn-danger btn-sm allbands">  Delete  </button>
+   </form>
    #end
   </div>
 </div>
@@ -38,6 +41,9 @@
     <h3>List of all Venues</h3>
    #foreach ($venue in $venues)
    <a class="btn btn-warning btn-md btn-block" href="/venue/$venue.getId()">$venue.getName()</a><br>
+   <form action ='/venue/deleteAll' method ='post'>
+     <button type ='submit' class=".btn btn-danger btn-sm allbands">  Delete  </button>
+   </form>
    #end
   </div>
 </div>
