@@ -27,7 +27,9 @@
 
 
 #foreach ($band in $venue.getBands())
-<a class="btn btn-primary btn-lg btn-block" href="/band/$band.getId()">$band.getName()</a><br>#end
+<a class="btn btn-primary btn-lg btn-block" href="/band/$band.getId()">$band.getName()</a><br>
+#end
+
 <footer>
   <br><h3><a href="/" class="bg-success">Go Home</a></h3>
 </footer>
