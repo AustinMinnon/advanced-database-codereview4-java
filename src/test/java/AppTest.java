@@ -49,7 +49,7 @@ public class AppTest extends FluentTest {
   public void deleteAllRemovesBandsTest() {
     Band testBand = new Band("3 Doors Down");
     testBand.save();
-    goTo("http://localhost:4567/");
+    goTo("http://localhost:4567/add/venue");
     submit(".allbands");
     assertThat(pageSource()).doesNotContain("3 Doors Down");
   }

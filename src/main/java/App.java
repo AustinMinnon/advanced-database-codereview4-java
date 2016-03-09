@@ -101,6 +101,12 @@ public class App {
         return null;
       });
 
+    post("/band/deleteAll", (request, response) -> {
+      Band.deleteAllBands();
+      response.redirect("/");
+      return null;
+    });
+
     get("/venue/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       int id = Integer.parseInt(request.params("id"));
@@ -156,14 +162,8 @@ public class App {
       return null;
     });
 
-    post("/venue/delete", (request, response) -> {
+    post("/venue/deleteAll", (request, response) -> {
       Venue.deleteAllVenues();
-      response.redirect("/");
-      return null;
-    });
-
-    post("/band/delete", (request, response) -> {
-      Band.deleteAllBands();
       response.redirect("/");
       return null;
     });
